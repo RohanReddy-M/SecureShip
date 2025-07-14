@@ -7,7 +7,7 @@ variable "instance_type" {
 }
 
 variable "key_name" {
-  default = "Rohankey"
+  default = "key"
 }
 
 variable "my_ip" {
