@@ -21,8 +21,8 @@ jobs:
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@65.0.168.99 << 'EOF'
-            docker pull YOUR_DOCKERHUB_USERNAME/secureship:latest || true
+            docker pull 516002/secureship:latest || true
             docker stop secureship || true
             docker rm secureship || true
-            docker run -d -p 3000:3000 --name secureship YOUR_DOCKERHUB_USERNAME/secureship:latest
+            docker run -d -p 3000:3000 --name secureship 516002/secureship:latest
           EOF
