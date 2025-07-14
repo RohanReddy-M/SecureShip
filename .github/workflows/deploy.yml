@@ -1,0 +1,28 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Copy SSH key and set permissions
+        uses: webfactory/ssh-agent@v0.8.1
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: Deploy to EC2
+        run: |
+          ssh -o StrictHostKeyChecking=no ubuntu@65.0.168.99 << 'EOF'
+            docker pull YOUR_DOCKERHUB_USERNAME/secureship:latest || true
+            docker stop secureship || true
+            docker rm secureship || true
+            docker run -d -p 3000:3000 --name secureship YOUR_DOCKERHUB_USERNAME/secureship:latest
+          EOF
