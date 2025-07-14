@@ -14,15 +14,15 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Copy SSH key and set permissions
-        uses: webfactory/ssh-agent@v0.8.1
+        uses: webfactory/ssh-agent@v0.5.4
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
 
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@65.0.168.99 << 'EOF'
-            docker pull 516002/secureship:latest || true
             docker stop secureship || true
             docker rm secureship || true
+            docker pull 516002/secureship:latest || true
             docker run -d -p 3000:3000 --name secureship 516002/secureship:latest
           EOF
