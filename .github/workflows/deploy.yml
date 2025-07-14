@@ -13,16 +13,20 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Copy SSH key and set permissions
-        uses: webfactory/ssh-agent@v0.5.4
+      - name: Set up SSH Agent
+        uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: DockerHub Login
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
 
       - name: Deploy to EC2
         run: |
           ssh -o StrictHostKeyChecking=no ubuntu@65.0.168.99 << 'EOF'
+            docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" -p "${{ secrets.DOCKERHUB_TOKEN }}"
             docker stop secureship || true
             docker rm secureship || true
-            docker pull 516002/secureship:latest || true
+            docker pull 516002/secureship:latest
             docker run -d -p 3000:3000 --name secureship 516002/secureship:latest
           EOF
