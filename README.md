@@ -31,18 +31,21 @@ This project mimics how modern cloud-native teams automate code delivery — fro
 
 | Description | Screenshot |
 |------------|------------|
-| ✅ CI/CD Workflow Success | ![CICD Success](SecureShip/CICD-Success.png) |
-| 📦 Docker Container Running on EC2 | ![Docker PS](SecureShip/Docker-PS.png) |
-| 🌐 App Running Live | ![Live App](SecureShip/Live-App.png) |
+| ✅ CI/CD Workflow Success | ![CICD Success](cicd-success.png) |
+| 📦 Docker Container Running on EC2 | ![Docker PS](docker-ps.png) |
+| 🌐 App Running Live | ![Live App](live-app.png) |
+
 
 ---
 
 ## 🔒 Secrets Used
 
-Secret Name	Purpose
-EC2_SSH_KEY	Private key for EC2 login
-DOCKERHUB_USERNAME	
-DOCKERHUB_TOKEN	
+- Secret Name	Purpose
+- EC2_SSH_KEY	Private key for EC2 login
+- DOCKERHUB_USERNAME	
+- DOCKERHUB_TOKEN	
+
+---
 
 ## 🌍 Live App
 
