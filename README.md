@@ -31,9 +31,9 @@ This project mimics how modern cloud-native teams automate code delivery — fro
 
 | Description | Screenshot |
 |------------|------------|
-| ✅ CI/CD Workflow Success | ![CICD Success](SecureShip/CICD Success.png) |
-| 📦 Docker Container Running on EC2 | ![Docker PS](SecureShip/Docker PS.png) |
-| 🌐 App Running Live | ![Live App](SecureShip/Live App.png) |
+| ✅ CI/CD Workflow Success | ![CICD Success](SecureShip/CICD-Success.png) |
+| 📦 Docker Container Running on EC2 | ![Docker PS](SecureShip/Docker-PS.png) |
+| 🌐 App Running Live | ![Live App](SecureShip/Live-App.png) |
 
 ---
 
